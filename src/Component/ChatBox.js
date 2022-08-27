@@ -12,22 +12,24 @@ function ChatBox(){
         e.preventDefault();
         const data = {...info}
         data[e.target.name] = e.target.value;
-        setInfo({
-            info:data
-        })
+        setInfo(data)
     }
+
     const sendMessage =(e)=>{
         e.preventDefault();
-        const message = messageData;
-        message.push(info)
-        setMessageData({
-            setMessageData:message
-        })
+        setMessageData(messageData.concat(info))
+        // const message = [...messageData];
+        // message.push(info)
+        // setMessageData(
+        //     message
+        // )
+
         setInfo({
             username: info.username,
             message: ""
         })
     }
+
 
 
     return(
@@ -42,7 +44,7 @@ function ChatBox(){
                                     return (
                                         <div className="message-item" key={index}>
                                             <div className="message-item-content">
-                                                {messageItem.message}
+                                                { messageItem.message}
                                             </div>
                                             <p className="message-item-name">{messageItem.username}</p>
                                         </div>
@@ -69,7 +71,6 @@ function ChatBox(){
                 </div>
             </div>
         </>
-
     )
 }
 export default ChatBox
